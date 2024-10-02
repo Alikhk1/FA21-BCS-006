@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+        .form-container {
+            margin-top: 50px;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-dark text-white">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">Apple Logo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Mac</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">iPad</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">iPhone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Watch</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">TV</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Music</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Checkout Form Section -->
+    <main>
+        <div class="container form-container">
+            <h2 class="text-center">Checkout</h2>
+            <form id="checkout-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    <span id="name-error" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    <span id="email-error" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                    <span id="address-error" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter your city">
+                    <span id="city-error" class="error-message"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center mt-5">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a class="nav-link" href="#">Find a Store</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Contact Apple</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Privacy Policy</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Terms of Use</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Site Map</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            let isValid = true;
+
+            // Clear previous error messages
+            document.getElementById('name-error').innerText = '';
+            document.getElementById('email-error').innerText = '';
+            document.getElementById('address-error').innerText = '';
+            document.getElementById('city-error').innerText = '';
+
+            // Validate Name
+            const name = document.getElementById('name').value;
+            if (!name) {
+                document.getElementById('name-error').innerText = 'Name is required.';
+                isValid = false;
+            }
+
+            // Validate Email
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email) {
+                document.getElementById('email-error').innerText = 'Email is required.';
+                isValid = false;
+            } else if (!email.match(emailPattern)) {
+                document.getElementById('email-error').innerText = 'Please enter a valid email.';
+                isValid = false;
+            }
+
+            // Validate Address
+            const address = document.getElementById('address').value;
+            if (!address) {
+                document.getElementById('address-error').innerText = 'Address is required.';
+                isValid = false;
+            }
+
+            // Validate City
+            const city = document.getElementById('city').value;
+            if (!city) {
+                document.getElementById('city-error').innerText = 'City is required.';
+                isValid = false;
+            }
+
+            // If all fields are valid, display an alert (for demo purposes)
+            if (isValid) {
+                alert('Form submitted successfully!');
+            }
+        });
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
