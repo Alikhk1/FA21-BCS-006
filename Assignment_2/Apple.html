@@ -7,6 +7,23 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        .hero {
+            background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .cta-button {
+            background: #ff4d00;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 10px 5px;
+            border-radius: 5px;
+        }
+        .product {
+            margin: 20px 0;
+        }
         .error-message {
             color: red;
             font-size: 0.9em;
@@ -35,14 +52,52 @@
                     <li class="nav-item"><a class="nav-link" href="#">TV</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Music</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Checkout Form Section -->
+    <!-- Main Content Section -->
     <main>
-        <div class="container form-container">
+        <!-- Hero Product Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>iPhone 15</h1>
+                <p>The ultimate iPhone experience.</p>
+                <a href="#" class="cta-button">Learn More</a>
+                <a href="#" class="cta-button">Buy</a>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="container">
+            <div class="row">
+                <div class="col-md-6 product">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">MacBook Air</h2>
+                            <p class="card-text">Powerful. Light. Elegant.</p>
+                            <a href="#" class="cta-button">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 product">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">iPad Pro</h2>
+                            <p class="card-text">Everything you need in a tablet.</p>
+                            <a href="#" class="cta-button">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Form Section -->
+        <section class="container form-container">
             <h2 class="text-center">Checkout</h2>
             <form id="checkout-form" novalidate>
                 <div class="form-group">
@@ -67,11 +122,11 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-        </div>
+        </section>
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-dark text-white text-center mt-5">
+    <footer class="bg-dark text-white text-center">
         <ul class="list-inline">
             <li class="list-inline-item"><a class="nav-link" href="#">Find a Store</a></li>
             <li class="list-inline-item"><a class="nav-link" href="#">Contact Apple</a></li>
@@ -132,7 +187,6 @@
         });
     </script>
 
-    <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
