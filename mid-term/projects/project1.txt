@@ -1,0 +1,2 @@
+Project: Simple Calculator with GUI in Java  
+Description: This project is a basic calculator built using Java Swing for the GUI. It supports essential arithmetic operations like addition, subtraction, multiplication, and division. The interface is user-friendly with buttons for numbers and operations, and a display to show results. It serves as a foundational project to understand GUI design in Java and event handling mechanisms.

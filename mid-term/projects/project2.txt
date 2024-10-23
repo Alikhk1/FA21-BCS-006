@@ -1,0 +1,2 @@
+Project: Discrete Structures Project  
+Description: This project explores various concepts from Discrete Structures, such as set theory, graphs, and logic. The project involved solving problems related to set operations, propositional logic, and creating algorithms for graph traversal. The goal was to apply mathematical principles to solve computational problems, enhancing understanding of the underlying theory.

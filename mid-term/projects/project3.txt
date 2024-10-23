@@ -1,0 +1,3 @@
+
+Project: OOP Project - Twitter-like Site  
+Description: This object-oriented programming (OOP) project involved developing a basic social media platform similar to Twitter. The site allowed users to post messages, follow other users, and view a feed of updates. It was built with a focus on implementing key OOP principles like inheritance, polymorphism, and encapsulation, while simulating real-world application logic.

@@ -1,0 +1,2 @@
+Project: Software Engineering Concepts - Garbage Disposal Software Documentation  
+Description: This project required documenting the software development process for a garbage disposal management system. The documentation included software requirements specification (SRS), use case diagrams, class diagrams, and other UML artifacts. It covered key software engineering concepts such as system design, requirement analysis, and software lifecycle methodologies.

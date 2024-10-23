@@ -1,0 +1,1 @@
+Open the portfolio.html file with live preview in Visual Studio so show description element works without error.

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio with Images</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">My Portfolio</a>
+    </div>
+</nav>
+
+<!-- Portfolio Container -->
+<div class="container mt-5">
+    <h1 class="text-center mb-4">My Project Portfolio</h1>
+
+    <!-- Semester 1 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            Semester 1 Projects
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Simple Calculator with GUI in Java</h5>
+            <img src="images/calculator_project.jpg" alt="Calculator Project" class="img-fluid mb-3">
+            <p class="card-text">This project involves building a simple calculator with a Java GUI...</p>
+            <button class="btn btn-primary" onclick="loadDescription('project1.txt', 'description1')">Show Description</button>
+            <p id="description1" class="mt-3"></p>
+        </div>
+    </div>
+
+    <!-- Semester 2 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            Semester 2 Projects
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Discrete Structures Project</h5>
+            <img src="images/discrete_project.jpg" alt="Discrete Structures Project" class="img-fluid mb-3">
+            <p class="card-text">A project focused on concepts like set theory, graphs, and logic...</p>
+            <button class="btn btn-primary" onclick="loadDescription('project2.txt', 'description2')">Show Description</button>
+            <p id="description2" class="mt-3"></p>
+        </div>
+    </div>
+
+    <!-- Semester 3 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            Semester 3 Projects
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">OOP Project - Twitter-like Site</h5>
+            <img src="images/twitter_project.jpg" alt="OOP Twitter-like Site" class="img-fluid mb-3">
+            <p class="card-text">An OOP-based project involving a basic social media platform...</p>
+            <button class="btn btn-primary" onclick="loadDescription('project3.txt', 'description3')">Show Description</button>
+            <p id="description3" class="mt-3"></p>
+        </div>
+    </div>
+
+    <!-- Semester 4 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            Semester 4 Projects
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Software Engineering Documentation - Garbage Disposal</h5>
+            <img src="images/garbage_disposal.jpg" alt="Garbage Disposal Documentation" class="img-fluid mb-3">
+            <p class="card-text">A documentation project for a garbage disposal system...</p>
+            <button class="btn btn-primary" onclick="loadDescription('project4.txt', 'description4')">Show Description</button>
+            <p id="description4" class="mt-3"></p>
+        </div>
+    </div>
+
+    <!-- Semester 5 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            Semester 5 Projects
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Machine Learning Project for Traffic</h5>
+            <img src="images/traffic_ml_project.jpg" alt="Machine Learning for Traffic" class="img-fluid mb-3">
+            <p class="card-text">A machine learning project focusing on traffic data analysis...</p>
+            <button class="btn btn-primary" onclick="loadDescription('project5.txt', 'description5')">Show Description</button>
+            <p id="description5" class="mt-3"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center py-4 bg-dark text-white mt-5">
+    <p>&copy; 2024 My Portfolio. All Rights Reserved.</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

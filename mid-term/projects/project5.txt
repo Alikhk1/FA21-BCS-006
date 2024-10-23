@@ -1,0 +1,2 @@
+Project: Machine Learning for Traffic Analysis  
+Description: This project applied machine learning techniques to analyze traffic data and predict congestion patterns. Using Python and popular libraries like TensorFlow and scikit-learn, the project built a model to classify and forecast traffic conditions. The focus was on feature extraction, data preprocessing, and model training, aiming to create a system that could help improve traffic management.
