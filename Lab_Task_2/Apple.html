@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .hero {
+            background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .cta-button {
+            background: #ff4d00;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 10px 5px;
+            border-radius: 5px;
+        }
+        .product {
+            margin: 20px 0;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+        .form-container {
+            margin-top: 50px;
+            max-width: 600px;
+        }
+
+            #api-response {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+        min-height: 100px;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-dark text-white">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">Apple Logo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Mac</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">iPad</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">iPhone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Watch</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">TV</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Music</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Hero Product Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>iPhone 15</h1>
+                <p>The ultimate iPhone experience.</p>
+                <a href="#" class="cta-button">Learn More</a>
+                <a href="#" class="cta-button">Buy</a>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="container">
+            <div class="row">
+                <div class="col-md-6 product">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">MacBook Air</h2>
+                            <p class="card-text">Powerful. Light. Elegant.</p>
+                            <a href="#" class="cta-button">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 product">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">iPad Pro</h2>
+                            <p class="card-text">Everything you need in a tablet.</p>
+                            <a href="#" class="cta-button">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Form Section -->
+        <section class="container form-container">
+            <h2 class="text-center">Checkout</h2>
+            <form id="checkout-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    <span id="name-error" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    <span id="email-error" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                    <span id="address-error" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter your city">
+                    <span id="city-error" class="error-message"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </section>
+
+            <!-- Add buttons for AJAX operations -->
+    <section class="container form-container">
+        <h2 class="text-center">Test CRUD with API</h2>
+        <div class="form-group">
+            <label for="post-id">Post ID (for Read, Update, Delete)</label>
+            <input type="text" class="form-control" id="post-id" placeholder="Enter post ID">
+        </div>
+        <button id="create-post" class="btn btn-success">Create Post</button>
+        <button id="read-post" class="btn btn-info">Read Post</button>
+        <button id="update-post" class="btn btn-warning">Update Post</button>
+        <button id="delete-post" class="btn btn-danger">Delete Post</button>
+
+        <!-- Area to display post results -->
+        <div id="api-response" class="mt-3">
+            <pre id="response-output"></pre>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a class="nav-link" href="#">Find a Store</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Contact Apple</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Privacy Policy</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Terms of Use</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Site Map</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            let isValid = true;
+
+            // Clear previous error messages
+            document.getElementById('name-error').innerText = '';
+            document.getElementById('email-error').innerText = '';
+            document.getElementById('address-error').innerText = '';
+            document.getElementById('city-error').innerText = '';
+
+            // Validate Name
+            const name = document.getElementById('name').value;
+            if (!name) {
+                document.getElementById('name-error').innerText = 'Name is required.';
+                isValid = false;
+            }
+
+            // Validate Email
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email) {
+                document.getElementById('email-error').innerText = 'Email is required.';
+                isValid = false;
+            } else if (!email.match(emailPattern)) {
+                document.getElementById('email-error').innerText = 'Please enter a valid email.';
+                isValid = false;
+            }
+
+            // Validate Address
+            const address = document.getElementById('address').value;
+            if (!address) {
+                document.getElementById('address-error').innerText = 'Address is required.';
+                isValid = false;
+            }
+
+            // Validate City
+            const city = document.getElementById('city').value;
+            if (!city) {
+                document.getElementById('city-error').innerText = 'City is required.';
+                isValid = false;
+            }
+
+            // If all fields are valid, display an alert (for demo purposes)
+            if (isValid) {
+                alert('Form submitted successfully!');
+            }
+        });
+        // Utility function to display API responses
+    function displayResponse(response) {
+        document.getElementById('response-output').innerText = JSON.stringify(response, null, 4);
+    }
+
+    // Create Post (POST request)
+    document.getElementById('create-post').addEventListener('click', function() {
+        const postData = {
+            title: 'New Post',
+            body: 'This is a new post created via AJAX.',
+            userId: 1
+        };
+
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        })
+        .then(response => response.json())
+        .then(data => displayResponse(data))
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Read Post (GET request)
+    document.getElementById('read-post').addEventListener('click', function() {
+        const postId = document.getElementById('post-id').value;
+
+        if (!postId) {
+            alert('Please enter a Post ID to read');
+            return;
+        }
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+        .then(response => response.json())
+        .then(data => displayResponse(data))
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Update Post (PUT request)
+    document.getElementById('update-post').addEventListener('click', function() {
+        const postId = document.getElementById('post-id').value;
+
+        if (!postId) {
+            alert('Please enter a Post ID to update');
+            return;
+        }
+
+        const updatedData = {
+            title: 'Updated Post Title',
+            body: 'This post has been updated via AJAX.',
+            userId: 1
+        };
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedData),
+        })
+        .then(response => response.json())
+        .then(data => displayResponse(data))
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Delete Post (DELETE request)
+    document.getElementById('delete-post').addEventListener('click', function() {
+        const postId = document.getElementById('post-id').value;
+
+        if (!postId) {
+            alert('Please enter a Post ID to delete');
+            return;
+        }
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+            method: 'DELETE',
+        })
+        .then(() => displayResponse({ message: `Post ${postId} deleted successfully.` }))
+        .catch(error => console.error('Error:', error));
+    });
+
+    </script>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
