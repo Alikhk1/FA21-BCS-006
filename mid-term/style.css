@@ -1,44 +1,143 @@
+/* General Body Style */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F5F5F5;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
+/* Navbar */
+.navbar {
+    background-color: #1A1F71;
+}
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: #F5F5F5 !important;
+}
+
+/* Main Title */
 h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1A1F71;
     font-size: 3rem;
-    color: #343a40;
+    margin-bottom: 30px;
 }
 
+/* Card Styling */
 .card {
-    background-color: #ffffff;
+    border: none;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #E9ECEF;
+    font-weight: bold;
+    color: #1A1F71;
+    font-size: 1.25rem;
 }
 
 .card-title {
-    font-weight: bold;
-    color: #495057;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #333;
 }
 
 .card-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: #555;
 }
 
-#description1, #description2, #description3, #description4, #description5 {
+.card-body {
+    padding: 2rem;
+}
+
+.img-fluid {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.img-fluid:hover {
+    transform: scale(1.05);
+}
+
+/* Button Styling */
+.btn-outline-primary {
+    color: #1A1F71;
+    border-color: #1A1F71;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1A1F71;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    background-color: #1A1F71;
+    color: #F5F5F5;
+}
+
+/* Descriptions */
+.description {
     font-style: italic;
     color: #6c757d;
 }
 
-footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
+
+
+/* Example CSS for hover effects */
+.card {
+    transition: transform 0.2s; /* Smooth scaling */
 }
 
-img {
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-.card-body {
-    text-align: center;
+.btn-outline-primary {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Body font */
+    line-height: 1.6; /* Better readability */
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif; /* Heading font */
+}
+
+
+
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.card {
+    border: none; /* Remove default border */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.card-header {
+    background-color: #007bff; /* Navbar color */
+    color: white;
+    font-weight: bold;
 }
