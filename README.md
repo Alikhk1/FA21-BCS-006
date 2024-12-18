@@ -7,3 +7,10 @@
 
 # Project : Apple.com
 
+****
+For User:
+http://localhost:5000/
+
+For Admin:
+http://localhost:5000/admin/products   
+http://localhost:5000/admin/category
