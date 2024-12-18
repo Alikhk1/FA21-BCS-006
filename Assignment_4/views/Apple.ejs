@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Landing Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .hero {
+            background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .cta-button {
+            background: #ff4d00;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 10px 5px;
+            border-radius: 5px;
+        }
+        .product-card {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-dark text-white">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">Apple Logo</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+
+                    <!-- Cart Button showing number of items in the cart -->
+                    <li><a href="/cart"><button class="cart-btn">   
+                        Cart 
+                    </button></a></li>
+
+                    <% if (user) { %>
+                        <li class="nav-item"><span class="nav-link">Hello, <%= user.username %></span></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a class="btn btn-primary btn-sm ml-2" href="/login">Login</a></li>
+                        <li class="nav-item"><a class="btn btn-success btn-sm ml-2" href="/signup">Sign Up</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>iPhone 15</h1>
+                <p>The ultimate iPhone experience.</p>
+                <a href="#" class="cta-button">Learn More</a>
+                <a href="#" class="cta-button">Buy</a>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="container">
+            <h2>Our Products</h2>
+            <div class="row">
+                <% products.forEach(product => { %>
+                    <div class="col-md-4 product-card">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h3 class="card-title"><%= product.name %></h3>
+                                <p class="card-text">Color: <%= product.color %></p>
+                                <p class="card-text">Price: $<%= product.price %></p>
+                                <button class="add-to-cart" 
+                                    data-id="<%= product._id %>" 
+                                    data-name="<%= product.name %>" 
+                                    data-price="<%= product.price %>">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a class="nav-link" href="#">Find a Store</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Contact Apple</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Privacy Policy</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Terms of Use</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="#">Site Map</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="/about-me">About me</a></li>
+        </ul>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function addToCartAnimation() {
+          const button = document.querySelector('.add-to-cart');
+          button.classList.add('clicked');
+          
+          setTimeout(() => {
+            button.classList.remove('clicked');
+          }, 1000);
+        }
+    </script>
+
+<script>
+    $(document).ready(function () {
+        $('.add-to-cart').on('click', function () {
+            const productId = $(this).data('id');
+            const productName = $(this).data('name');
+            const productPrice = $(this).data('price');
+
+            $.ajax({
+                url: '/add-to-cart',
+                method: 'POST',
+                data: {
+                    productId: productId,
+                    productName: productName,
+                    productPrice: productPrice
+                },
+                success: function (response) {
+                    alert(response.message);
+                    // Optionally, update the cart count here dynamically
+                    $('.cart-btn').text('Cart (' + response.cartItemCount + ' items)');
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        });
+    });
+</script>
+      
+    <!-- Style -->
+    <style>
+        .add-to-cart {
+            padding: 12px 24px;
+            background-color: #FF5722;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .add-to-cart:hover {
+            background-color: #E64A19;
+        }
+    
+        .add-to-cart.clicked {
+            animation: clickAnimation 0.6s forwards;
+        }
+    
+        @keyframes clickAnimation {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+            }
+        }
+    </style>
+</body>
+</html>

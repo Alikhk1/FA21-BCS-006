@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: #1d1f20;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: white;
+            font-weight: 500;
+            padding: 8px 15px;
+            font-size: 16px;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #ff4d00;
+        }
+
+        .hero {
+            background: url('/images/Iphone15s.jpg') no-repeat center center/cover;
+            height: 100vh;
+            text-align: center;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: #ff4d00;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 50px;
+            margin: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background: #e64a19;
+            transform: scale(1.05);
+        }
+
+        .product-card {
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card .card-body {
+            padding: 20px;
+        }
+
+        .product-card .card-title {
+            font-weight: 600;
+            font-size: 22px;
+        }
+
+        .product-card .card-text {
+            font-weight: 400;
+            font-size: 16px;
+            color: #777;
+        }
+
+        .add-to-cart {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 12px 24px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e64a19;
+        }
+
+        footer {
+            background-color: #1d1f20;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ff4d00;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 45px;
+            }
+            .hero p {
+                font-size: 20px;
+            }
+            .cta-button {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">Apple Logo</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Cart Button showing number of items in the cart -->
+                    <li><a href="/cart"><button class="cart-btn">
+                        Cart
+                    </button></a></li>
+
+                    <% if (user) { %>
+                        <li class="nav-item"><span class="nav-link">Hello, <%= user.username %></span></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a class="btn btn-primary btn-sm ml-2" href="/login">Login</a></li>
+                        <li class="nav-item"><a class="btn btn-success btn-sm ml-2" href="/signup">Sign Up</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>iPhone 15</h1>
+            <p>The ultimate iPhone experience.</p>
+            <a href="#" class="cta-button">Learn More</a>
+            <a href="#" class="cta-button">Buy Now</a>
+        </section>
+
+        <!-- Products Section -->
+        <section class="container mt-5">
+            <h2 class="text-center mb-5">Our Products</h2>
+            <div class="row">
+                <% products.forEach(product => { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card product-card">
+                            <!-- Display the product image dynamically -->
+                            <img class="card-img-top" src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                            <div class="card-body text-center">
+                                <h3 class="card-title"><%= product.name %></h3>
+                                <p class="card-text">Color: <%= product.color %></p>
+                                <p class="card-text">Price: $<%= product.price %></p>
+                                <button class="add-to-cart" 
+                                    data-id="<%= product._id %>"  
+                                    data-name="<%= product.name %>" 
+                                    data-price="<%= product.price %>">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Find a Store</a></li>
+            <li class="list-inline-item"><a href="#">Contact Apple</a></li>
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+            <li class="list-inline-item"><a href="#">Site Map</a></li>
+            <li class="list-inline-item"><a href="/about-me">About me</a></li>
+        </ul>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').on('click', function () {
+                const productId = $(this).data('id');
+                const productName = $(this).data('name');
+                const productPrice = $(this).data('price');
+
+                $.ajax({
+                    url: '/add-to-cart',
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + getCookie('authToken') // JWT from cookie
+                    },
+                    data: {
+                        productId: productId,
+                        productName: productName,
+                        productPrice: productPrice
+                    },
+                    success: function (response) {
+                        alert(response.message);
+                        $('.cart-btn').text('Cart (' + response.cartItemCount + ' items)');
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            });
+
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+        });
+    </script>
+
+</body>
+</html>

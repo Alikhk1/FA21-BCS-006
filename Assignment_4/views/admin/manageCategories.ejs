@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Manage Categories</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 30px;
+    }
+    .table {
+      background-color: white;
+    }
+    .pagination {
+      justify-content: center;
+    }
+    .table th, .table td {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mb-4 text-center">Manage Categories</h2>
+
+    <!-- Add New Category Button -->
+    <div class="d-flex justify-content-end mb-3">
+      <a href="/admin/category/newForm" class="btn btn-primary">Create New Category</a>
+    </div>
+
+    <!-- Search, Filter, and Sort -->
+    <form method="GET" action="/admin/category" class="mb-4 p-3 border rounded bg-light">
+      <div class="row align-items-end">
+        <!-- Search -->
+        <div class="col-md-4">
+          <label for="search" class="form-label">Search by Name</label>
+          <input type="text" id="search" name="search" value="<%= search || '' %>" class="form-control" placeholder="Enter category name">
+        </div>
+
+        <!-- Filter by Price -->
+        <div class="col-md-3">
+          <label for="price" class="form-label">Filter by Price</label>
+          <input type="number" id="price" name="price" value="<%= price || '' %>" class="form-control" placeholder="Enter max price">
+        </div>
+
+        <!-- Sort By -->
+        <div class="col-md-3">
+          <label for="sortBy" class="form-label">Sort By</label>
+          <select id="sortBy" name="sortBy" class="form-select">
+            <option value="name" <%= sortBy === 'name' ? 'selected' : '' %>>Name</option>
+            <option value="price" <%= sortBy === 'price' ? 'selected' : '' %>>Price</option>
+          </select>
+        </div>
+
+        <!-- Order -->
+        <div class="col-md-2">
+          <label for="order" class="form-label">Order</label>
+          <select id="order" name="order" class="form-select">
+            <option value="asc" <%= order === 'asc' ? 'selected' : '' %>>Ascending</option>
+            <option value="desc" <%= order === 'desc' ? 'selected' : '' %>>Descending</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-md-2 text-end">
+          <button type="submit" class="btn btn-success">Apply</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Categories Table -->
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (categories.length > 0) { %>
+            <% categories.forEach(category => { %>
+              <tr>
+                <td><%= category.name %></td>
+                <td><%= category.description %></td>
+                <td>$<%= category.price.toFixed(2) %></td>
+                <td>
+                  <!-- Edit -->
+                  <a href="/admin/category/<%= category._id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+                  <!-- Delete -->
+                  <form action="/admin/category/<%= category._id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="4" class="text-center">No categories found</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <% for (let i = 1; i <= Math.ceil(total / limit); i++) { %>
+          <li class="page-item <%= page === i ? 'active' : '' %>">
+            <a class="page-link" href="?page=<%= i %>&limit=<%= limit %>&search=<%= search %>&price=<%= price %>&sortBy=<%= sortBy %>&order=<%= order %>"><%= i %></a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</body>
+</html>
